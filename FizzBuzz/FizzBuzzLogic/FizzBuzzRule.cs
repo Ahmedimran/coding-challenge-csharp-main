@@ -8,11 +8,11 @@ namespace FizzBuzz.FizzBuzzLogic
         public string output { get; set; }
         public FizzBuzzRule(RuleType ruleType)
         {
-            if (RuleType.Fizz == ruleType || RuleType.Buzz == ruleType || RuleType.Bar == ruleType)
-               this.op = RemainderRule(RuleType.Fizz);
+              if (RuleType.Fizz == ruleType || RuleType.Buzz == ruleType || RuleType.Bar == ruleType)
+                this.op = RemainderRule(ruleType);
             else
-                this.op = MultiplicationRule(RuleType.Fizz);
-            this.output = ruleType.ToString();            
+                this.op = MultiplicationRule(ruleType);
+            this.output = ruleType.ToString();  
         }
         private static Func<int, bool> RemainderRule(RuleType arule)
         {
