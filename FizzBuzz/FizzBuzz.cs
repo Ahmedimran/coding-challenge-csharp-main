@@ -19,17 +19,17 @@ using FizzBuzz.FizzBuzzLogic;
 
 namespace FizzBuzz
 {
-    
-
     public class Program
     {
         public static void Main(string[] args)
         {
-            FizzBuzzRule[] rulez = RuleHelper.RuleBook();
+            var fizz = new FizzBuzzRule(RuleType.Fizz);
+            var buzz = new FizzBuzzRule(RuleType.Buzz);
+            var bar = new FizzBuzzRule(RuleType.Bar);
+            var foo = new FizzBuzzRule(RuleType.Foo);
+            var rulez = new FizzBuzzRule[] { fizz, buzz, bar, foo };
             FizzBuzzEngine engine = new FizzBuzzEngine(rulez);
             engine.Run();
-        }
-
-       
+        }       
     }
 }

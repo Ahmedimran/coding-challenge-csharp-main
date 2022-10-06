@@ -6,13 +6,32 @@ namespace FizzBuzz.FizzBuzzLogic
     {
         public Func<int, bool> op { get; set; }
         public string output { get; set; }
-        public FizzBuzzRule(Func<int, bool> op, string output)
+        public FizzBuzzRule(RuleType ruleType)
         {
-            this.op = op;
-            this.output = output;
+            if (RuleType.Fizz == ruleType || RuleType.Buzz == ruleType || RuleType.Bar == ruleType)
+            {
+                this.op = RemainderRule(RuleType.Fizz);
+                this.output = ruleType.ToString();
+
+            }
+            else
+            {
+                this.op = MultiplicationRule(RuleType.Fizz);
+                this.output = ruleType.ToString();
+            }
+        }
+        private static Func<int, bool> RemainderRule(RuleType arule)
+        {
+            Func<int, bool> rfunc = (i) => i % (int)arule == 0;
+            return rfunc;
+        }
+        private static Func<int, bool> MultiplicationRule(RuleType arule)
+        {
+            Func<int, bool> rfunc = (i) => i * (int)arule > 100;
+            return rfunc;
         }
     }
-    enum RuleType
+    public enum RuleType
     {
         Fizz = 3, Buzz = 5, Bar = 7, Foo = 10
     };
